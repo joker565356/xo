@@ -65,8 +65,8 @@ class _FirstpageState extends State<Firstpage> {
               textColor: Colors.white,
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(
-                  builder: (context)=>new inGamePage(int.parse(size.text)),
-                  ));
+                  builder: (context)=>new inGamePage(),
+                ));
               },
             child: Text("Start"),
             ),
