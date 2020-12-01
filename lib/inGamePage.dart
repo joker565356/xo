@@ -80,6 +80,7 @@ class _inGamePageState extends State<inGamePage> {
               lastChar2 = 'X';
             else
               lastChar2 = 'O';
+            count++;
           }
         });
         for (var k = 0; k < matrix.length; k++) {
@@ -90,7 +91,6 @@ class _inGamePageState extends State<inGamePage> {
           print(str);
         }
         checkTheWinner(i, j);
-        count++;
         if (count == (matrix.length * matrix.length)) alertDraw();
       },
       child: Container(

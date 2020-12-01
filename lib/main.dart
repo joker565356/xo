@@ -12,6 +12,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      
       home: Firstpage(),
     );
   }
@@ -45,7 +46,7 @@ class _FirstpageState extends State<Firstpage> {
                 controller: size,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
-                maxLength: 3,
+                maxLength: 2,
                 decoration: InputDecoration(
                   labelText: 'Dimension Size',
                   border: OutlineInputBorder(
