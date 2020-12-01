@@ -29,7 +29,6 @@ class Firstpage extends StatefulWidget {
 
 class _FirstpageState extends State<Firstpage> {
   var size = new TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +76,7 @@ class _FirstpageState extends State<Firstpage> {
               color: Colors.blue,
               textColor: Colors.white,
               onPressed: () {
-
+                print(size.text);
                 if(int.parse(size.text)<3 || int.parse(size.text)>10)
                   alertSize();
                 else{
@@ -98,20 +97,23 @@ class _FirstpageState extends State<Firstpage> {
   }
   alertSize() {
     showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-              title: Text('Alert'),
-              content: Text('Size is between 3-10 only'),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text('OK'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    size.clear();
-                  },
-                )
-              ]);
-        });
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Size is between 3-10 only'),
+          actions: <Widget>[
+          FlatButton(
+            child: Text(
+              "OK",
+              style: TextStyle(fontSize: 18.0),
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+              size.clear();
+            },
+          ),
+        ]);
+      }
+    );
   }
 }

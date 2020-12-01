@@ -134,56 +134,59 @@ class _inGamePageState extends State<inGamePage> {
   }
   alertWinner(String winner) {
     showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-              title: Text('Game Over'),
-              content: Text('Player $winner won'),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text('New Dimension'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.pop(context);
-                  },
-                ),
-                FlatButton(
-                  child: Text('Play Again'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    setState(() {
-                      _initMatrix();
-                    });
-                  },
-                )
-              ]);
-        });
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Player \'$winner\' is the Winner'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('New Dimension'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pop(context);
+              },
+            ),
+            FlatButton(
+              child: Text('Play Again'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                setState(() {
+                  _initMatrix();
+                });
+              },
+            )
+          ]
+        );
+      }
+    );
   }
   alertDraw() {
     showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-              title: Text('Game Over'),
-              content: Text('Draw'),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text('New Dimension'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.pop(context);
-                  },
-                ),
-                FlatButton(
-                  child: Text('Play Again'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    setState(() {
-                      _initMatrix();
-                    });
-                  },
-                )
-              ]);
-        });
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Draw'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('New Dimension',style: TextStyle(fontSize: 18.0),),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pop(context);
+                
+              },
+            ),
+            FlatButton(
+              child: Text('Play Again',style: TextStyle(fontSize: 18.0),),
+              onPressed: () {
+                Navigator.of(context).pop();
+                setState(() {
+                  _initMatrix();
+                });
+              },
+            )
+          ]
+        );
+      }
+    );
   }
 }
