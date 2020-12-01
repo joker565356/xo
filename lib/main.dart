@@ -1,11 +1,9 @@
-import 'package:xo/modelSize.dart';
-
 import 'inGamePage.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(App());
 
-class App extends StatelessWidget{
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -63,12 +61,15 @@ class _FirstpageState extends State<Firstpage> {
             RaisedButton(
               color: Colors.blue,
               textColor: Colors.white,
-              onPressed: (){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context)=>new inGamePage(),
-                ));
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          new inGamePage(int.parse(size.text)),
+                    ));
               },
-            child: Text("Start"),
+              child: Text("Start"),
             ),
           ],
         ),
@@ -76,5 +77,3 @@ class _FirstpageState extends State<Firstpage> {
     );
   }
 }
-
-
