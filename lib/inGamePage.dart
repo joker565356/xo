@@ -94,13 +94,13 @@ class _inGamePageState extends State<inGamePage> {
         if (count == (matrix.length * matrix.length)) alertDraw();
       },
       child: Container(
-        width: 30,
+        width: 35,
         decoration: BoxDecoration(
             shape: BoxShape.rectangle, border: Border.all(color: Colors.black)),
         child: Text(
           matrix[i][j],
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 30),
+          style: TextStyle(fontSize: 35),
         ),
       ),
     );
@@ -132,7 +132,6 @@ class _inGamePageState extends State<inGamePage> {
       alertWinner(player);
     }
   }
-
   alertWinner(String winner) {
     showDialog(
         context: context,
@@ -160,7 +159,6 @@ class _inGamePageState extends State<inGamePage> {
               ]);
         });
   }
-
   alertDraw() {
     showDialog(
         context: context,

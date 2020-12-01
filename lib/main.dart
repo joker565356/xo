@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import 'inGamePage.dart';
 import 'package:flutter/material.dart';
 
@@ -40,12 +42,24 @@ class _FirstpageState extends State<Firstpage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(
+                  top: 20.0, right: 20.0, left: 20.0, bottom: 30.0),
+              child: Image.asset(
+                'images/entertainment.png',
+                height: 150,
+                width: 150,
+              ),
+            ),
             Container(
               width: 300,
               child: TextField(
                 controller: size,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
+                inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly
+                ],
                 maxLength: 2,
                 decoration: InputDecoration(
                   labelText: 'Dimension Size',
@@ -63,12 +77,17 @@ class _FirstpageState extends State<Firstpage> {
               color: Colors.blue,
               textColor: Colors.white,
               onPressed: () {
-                Navigator.push(
+
+                if(int.parse(size.text)<3 || int.parse(size.text)>10)
+                  alertSize();
+                else{
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          new inGamePage(int.parse(size.text)),
+                        new inGamePage(int.parse(size.text)),
                     ));
+                }
               },
               child: Text("Start"),
             ),
@@ -76,5 +95,23 @@ class _FirstpageState extends State<Firstpage> {
         ),
       ),
     );
+  }
+  alertSize() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+              title: Text('Alert'),
+              content: Text('Size is between 3-10 only'),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    size.clear();
+                  },
+                )
+              ]);
+        });
   }
 }
