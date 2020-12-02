@@ -1,5 +1,4 @@
 import 'package:flutter/services.dart';
-
 import 'inGamePage.dart';
 import 'package:flutter/material.dart';
 
@@ -100,18 +99,23 @@ class _FirstpageState extends State<Firstpage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Size is between 3-10 only'),
-          actions: <Widget>[
-          FlatButton(
+          title: Center(
             child: Text(
-              "OK",
-              style: TextStyle(fontSize: 18.0),
+              'Size is between 3-10 only',
+              textAlign: TextAlign.center,
             ),
-            onPressed: () {
-              Navigator.of(context).pop();
-              size.clear();
-            },
           ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(
+                "OK",
+                style: TextStyle(fontSize: 18.0),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+                size.clear();
+              },
+            ),
         ]);
       }
     );

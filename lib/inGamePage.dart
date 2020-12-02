@@ -91,7 +91,6 @@ class _inGamePageState extends State<inGamePage> {
           print(str);
         }
         checkTheWinner(i, j);
-        if (count == (matrix.length * matrix.length)) alertDraw();
       },
       child: Container(
         width: 35,
@@ -131,23 +130,36 @@ class _inGamePageState extends State<inGamePage> {
     if (column == n + 1 || row == n + 1 || diag == n + 1 || rdiag == n + 1) {
       alertWinner(player);
     }
+    else if (count == (matrix.length * matrix.length))
+      alertDraw();
   }
   alertWinner(String winner) {
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Player \'$winner\' is the Winner'),
+          title: Center(
+            child: Text(
+              'Player \'$winner\' is the Winner',
+              textAlign: TextAlign.center,
+            ),
+          ),
           actions: <Widget>[
             FlatButton(
-              child: Text('New Dimension'),
+              child: Text(
+                'New Dimension',
+                style: TextStyle(fontSize: 18.0),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
                 Navigator.pop(context);
               },
             ),
             FlatButton(
-              child: Text('Play Again'),
+              child: Text(
+                'Play Again',
+                style: TextStyle(fontSize: 18.0),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
                 setState(() {
@@ -165,18 +177,28 @@ class _inGamePageState extends State<inGamePage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Draw'),
+          title: Center(
+            child: Text(
+              'Draw',
+              textAlign: TextAlign.center,
+            ),
+          ),
           actions: <Widget>[
             FlatButton(
-              child: Text('New Dimension',style: TextStyle(fontSize: 18.0),),
+              child: Text(
+                'New Dimension',
+                style: TextStyle(fontSize: 18.0),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
                 Navigator.pop(context);
-                
               },
             ),
             FlatButton(
-              child: Text('Play Again',style: TextStyle(fontSize: 18.0),),
+              child: Text(
+                'Play Again',
+                style: TextStyle(fontSize: 18.0),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
                 setState(() {
