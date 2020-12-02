@@ -76,7 +76,7 @@ class _FirstpageState extends State<Firstpage> {
               textColor: Colors.white,
               onPressed: () {
                 print(size.text);
-                if(int.parse(size.text)<3 || int.parse(size.text)>10)
+                if(int.parse(size.text)<3 || int.parse(size.text)>15)
                   alertSize();
                 else{
                   Navigator.push(
@@ -101,7 +101,7 @@ class _FirstpageState extends State<Firstpage> {
         return AlertDialog(
           title: Center(
             child: Text(
-              'Size is between 3-10 only',
+              'Size is between 3-15 only',
               textAlign: TextAlign.center,
             ),
           ),

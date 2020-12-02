@@ -39,32 +39,39 @@ class _inGamePageState extends State<inGamePage> {
         centerTitle: true,
         title: Text("Playing"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              lastChar2 + ' turn ',
-              style: TextStyle(fontSize: 25),
-            ),
-            /*Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                buildTable(0, 0),
-                buildTable(0, 1),
-                buildTable(0, 2),
-                buildTable(0, 3),
-              ],
-            ),*/
-            for (var i = 0; i < matrix.length; i++) buildFromDimension(i)
-          ],
-        ),
+      body: Container(
+        child: Center(
+          child: Stack(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top:15),
+                    child: Text(
+                      lastChar2 + ' turn ',
+                      style: TextStyle(fontSize: 25),
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top:60),
+                child: GridView.count(
+                  crossAxisCount: matrix.length,
+                  children: <Widget>[
+                    for (var i = 0; i < matrix.length; i++) 
+                      for (var j = 0; j < matrix[i].length; j++) 
+                        buildTable(i, j)
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),     
       ),
     );
   }
-
   buildTable(int i, int j) {
     return GestureDetector(
       onTap: () {
@@ -93,27 +100,20 @@ class _inGamePageState extends State<inGamePage> {
         checkTheWinner(i, j);
       },
       child: Container(
-        width: 35,
         decoration: BoxDecoration(
             shape: BoxShape.rectangle, border: Border.all(color: Colors.black)),
-        child: Text(
-          matrix[i][j],
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 35),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              matrix[i][j],
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 300/matrix.length),
+            ),
+          ],
         ),
       ),
     );
-  }
-
-  buildFromDimension(int length) {
-    List<Widget> list = new List<Widget>();
-    for (var i = 0; i < matrix.length; i++) {
-      list.add(buildTable(length, i));
-    }
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: list);
   }
 
   checkTheWinner(int x, int y) {
