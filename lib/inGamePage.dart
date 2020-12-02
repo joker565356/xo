@@ -90,13 +90,6 @@ class _inGamePageState extends State<inGamePage> {
             count++;
           }
         });
-        for (var k = 0; k < matrix.length; k++) {
-          var str = '';
-          for (var m = 0; m < matrix[k].length; m++) {
-            str += matrix[k][m];
-          }
-          print(str);
-        }
         checkTheWinner(i, j);
       },
       child: Container(
